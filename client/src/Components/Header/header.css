@@ -1,0 +1,38 @@
+header{
+    height:40px;
+    width:100%;    
+    display:flex;
+    flex-flow:row nowrap;
+    background:#333;
+}
+
+.tabContainer{
+    width:100%;
+    display:inline-flex;
+    flex-flow: row nowrap;     
+}
+
+button{
+    cursor: pointer;
+    width:40px;
+    height:40px;
+    background:transparent;
+    border:none;
+    color:#EEE;
+    font-size:2em;
+}
+
+.tab{
+    cursor: pointer;
+    color:#EEE;
+    flex-grow:1;
+    border:0px 1px 1px 1px;
+    text-align:center;
+    line-height:40px;
+}
+.tab.current{
+    background:#222
+}
+.tab+.tab{
+    border-left:solid 2px #222;
+}
