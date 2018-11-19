@@ -33,13 +33,20 @@ class App extends Component {
     );
   }
   componentDidMount() {
-    const shells = this.state.shells;
-
     document.addEventListener("keydown", e => {
-      const even = new Event("currentKeyDown", { bubbles: 123 });
-      shells[
-        shells.findIndex(element => element.state === "current")
-      ].shellRef.current.dispatchEvent(even);
+      this.state.shells[
+        this.state.shells.findIndex(element => element.state === "current")
+      ].shellRef.current.dispatchEvent(
+        new CustomEvent("currentKeyDown", { detail: e.keyCode })
+      );
+    });
+
+    document.addEventListener("keypress", e => {
+      this.state.shells[
+        this.state.shells.findIndex(element => element.state === "current")
+      ].shellRef.current.dispatchEvent(
+        new CustomEvent("currentKeyPress", { detail: e.keyCode })
+      );
     });
   }
   addTerminal = () => {

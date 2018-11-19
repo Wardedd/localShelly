@@ -22,7 +22,6 @@ class Terminal extends React.Component {
             {this.state.command}
             <span className="selected">&nbsp;</span>
           </p>
-          <input type="text" />
         </div>
       </div>
     );
@@ -40,7 +39,7 @@ class Terminal extends React.Component {
   }
 
   onKeyPress = event => {
-    switch (event.keyCode) {
+    switch (event.detail) {
       case 13: //enter
         this.runCommand(this.state.command);
         this.setState({
@@ -57,20 +56,19 @@ class Terminal extends React.Component {
 
       default:
         this.setState({
-          command: this.state.command + String.fromCharCode(event.keyCode)
+          command: this.state.command + String.fromCharCode(event.detail)
         });
         break;
     }
   };
 
-  onKeyDown = even => {
-    console.log("asd" + even.bubbles);
-    /* if (event.keyCode === 8 && this.state.command.length > 0) {
+  onKeyDown = event => {
+    if (event.detail === 8 && this.state.command.length > 0) {
       //backspace
       this.setState({
         command: this.state.command.slice(0, this.state.command.length - 1)
       });
-    }*/
+    }
   };
 
   runCommand = command => {
